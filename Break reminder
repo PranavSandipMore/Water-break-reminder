@@ -1,0 +1,16 @@
+from pygame import mixer
+import time
+
+mixer.init()
+mixer.music.load("reminder.mp3")
+
+while(1):#this is same as 'while(True)'
+    mixer.music.play()
+    stop = input("After drinking water and doing some eye exercise, Enter 'done'(only) to stop the reminder : ")
+    localtime = time.asctime(time.localtime(time.time()))
+    if stop=="done":
+        mixer.music.stop()
+        with open ("data.txt", "a") as f:
+            f.write(f"{localtime} : Break taken\n")
+        a = 60*30
+        time.sleep(a)
